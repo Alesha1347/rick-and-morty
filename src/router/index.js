@@ -33,7 +33,7 @@ const routes = [
         path:'/characters/:id',
         component: CharacterPage,
         name: 'characterPage'
-      }      
+      } 
     ]
   }
 ]

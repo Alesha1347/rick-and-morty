@@ -33,9 +33,21 @@ export default {
     watch:{
         'STATUS': function(){
             this.currentPage = 1
+            this.$router.push({name: 'characters', query:{
+                status: this.STATUS
+            }})
         },
         'SEARCH': function(){
             this.currentPage = 1
+            this.$router.push({name: 'characters', query:{
+                search: this.SEARCH
+            }})
+        },
+        'currentPage': function(){
+            this.$router.push({name: 'characters', query:{
+                ...this.$route.query,
+                page: this.currentPage,
+            }})
         }
     }
 }
