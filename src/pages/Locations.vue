@@ -1,15 +1,94 @@
 <template>
-  <div class="container">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe incidunt sapiente distinctio tempora porro quaerat suscipit, labore corrupti qui dolore laboriosam voluptates blanditiis ab culpa, sed laborum repellat nulla consequatur! Minima, ex? Vel dolores modi excepturi aperiam, id velit tempore commodi, eaque maiores consequatur aliquid. Dolore, atque laboriosam velit incidunt eaque iusto cupiditate nulla eius, debitis vel, et blanditiis fugit quisquam! Omnis nesciunt nostrum, pariatur repellendus suscipit soluta porro, dolorum provident, debitis est eligendi quos eius facilis repellat incidunt corrupti aspernatur assumenda deserunt fuga laboriosam consequatur. Non quo voluptatum odit facilis eligendi placeat similique, laborum earum possimus dignissimos repellat id cupiditate mollitia veritatis saepe? Distinctio porro quod, voluptatem, dignissimos soluta numquam consequuntur iste qui nisi voluptatum, suscipit quae libero modi? Animi, quisquam nulla aut quae, at totam dicta delectus enim illum quia quo similique obcaecati distinctio dolorum voluptatum hic voluptates libero, amet ex quod vel culpa beatae maxime. Magni, veniam aliquam. Nulla facere distinctio in a cumque dolorem ea nostrum quae eos labore? Velit, laudantium consectetur! Ab, ipsa? Beatae, voluptatem nihil, ea corrupti alias a distinctio error iure pariatur eligendi optio. Consectetur necessitatibus incidunt perspiciatis laborum ullam voluptas nemo, dolores suscipit expedita cumque iure non voluptate ea ab veniam nihil blanditiis voluptatum repudiandae aliquam. Laborum earum eveniet possimus debitis facilis, quaerat, inventore laboriosam facere explicabo totam similique suscipit. Reprehenderit aspernatur repudiandae expedita magnam exercitationem, earum, eius reiciendis quia praesentium libero dicta cumque quaerat? Alias pariatur architecto exercitationem, dolores, optio atque, quaerat modi laboriosam maxime cupiditate accusamus itaque asperiores. Debitis harum possimus ipsa quia cupiditate dolorum, tenetur alias fugit, labore expedita architecto fugiat? Temporibus quis vero odit animi, eveniet ex, ipsam est ullam omnis tempora quidem, nesciunt neque aperiam doloribus eum cum deleniti a dignissimos! Fugiat quod, molestiae inventore atque saepe non sed, iure quam reprehenderit et facere. Optio nemo impedit eius corrupti expedita, voluptatum eos ad odit perspiciatis repellat rerum exercitationem, excepturi sit maiores ea ipsa, dolor laborum illum libero ex quae sequi debitis consectetur. Eos, recusandae! Ea maxime numquam magni doloribus voluptatem similique illo qui quos voluptatum cumque consequuntur iusto iure dolor, provident omnis aliquam rerum. Illo quibusdam dignissimos cupiditate deserunt ipsum in totam id commodi rerum iusto unde, esse repudiandae necessitatibus voluptates nemo! Eveniet in, molestiae aut soluta vitae quas beatae delectus. Possimus in ullam aspernatur aperiam ut distinctio ratione ab dolore perspiciatis autem nemo sapiente commodi consequatur vel, tempore consequuntur sunt iusto culpa ducimus amet, exercitationem velit? Officiis, quis nesciunt animi officia facere totam beatae, similique quae repellat sint, est praesentium deserunt pariatur temporibus natus optio ipsam placeat tempore recusandae. Quidem vitae doloribus sint tenetur cupiditate laudantium aliquid dolorum quae sapiente numquam. Molestias quibusdam, expedita culpa sequi inventore sint dicta delectus. Assumenda, harum? Corporis nemo illum in ea, sapiente rem tempore amet! Harum odit similique corrupti dignissimos mollitia cum non, fuga error tempora quis veniam maiores quas temporibus neque ut sapiente debitis, quod ducimus minima. Iste ratione enim dolor voluptate exercitationem esse repellat incidunt error tempore, earum tenetur blanditiis eos, quae necessitatibus id nobis perspiciatis suscipit adipisci. Earum voluptatibus nisi ipsam sint nemo, dolorem ducimus suscipit porro! Reprehenderit officiis deleniti dolores repellendus cum, ducimus vero error in dignissimos blanditiis nihil, iste ipsum dolore eaque, aperiam architecto voluptates recusandae maiores labore voluptatibus! Pariatur fuga quisquam odit explicabo aliquid sed distinctio quasi blanditiis ipsam ea commodi minima eos, et dolorum, sit dicta laudantium accusantium harum? Rem porro consectetur amet odio ullam beatae! Voluptates aut ut qui aliquid tempore sapiente voluptatem. Amet hic perspiciatis ullam similique possimus! Illo a dolor quibusdam. In dolores modi id recusandae cupiditate? Ipsam, soluta dicta, labore dolores id illum ipsum autem perspiciatis dolorum cupiditate quaerat nostrum sunt laudantium debitis aliquam molestias iure, nam sequi eos ea iste vel inventore eaque. Recusandae alias tenetur fuga deserunt id? Distinctio laborum rem accusamus libero. Molestiae eius, vitae consequatur laboriosam iure cupiditate inventore vero perspiciatis veritatis aut quasi repudiandae praesentium rerum asperiores illum dolores animi, est ipsam ducimus officia eveniet, libero sunt. Praesentium ipsa tenetur totam! Eligendi eveniet itaque magnam ea accusamus. Architecto aliquid accusamus consequatur quam nesciunt doloremque deserunt optio esse tempora aperiam maxime, laudantium sequi unde corporis quia sunt, provident voluptate mollitia assumenda, sed quibusdam distinctio exercitationem? Illum quidem earum adipisci perspiciatis libero autem molestiae voluptatem culpa aspernatur, nesciunt dolor deserunt accusantium natus sunt nisi aliquam rerum debitis cupiditate consectetur amet, ipsam itaque id! Unde, tempore eveniet deleniti reiciendis tenetur perspiciatis doloribus exercitationem necessitatibus. Doloribus harum praesentium optio, dignissimos soluta eveniet impedit quidem ut enim corrupti, quae adipisci, laboriosam libero iste consequatur ad maiores aliquid quam itaque dolorum tempore architecto culpa. Totam iusto fugit corrupti voluptatibus, quae aspernatur laboriosam magnam. Nostrum quo fugiat excepturi omnis aspernatur odio, aut provident dolores itaque est porro ducimus, recusandae, repellendus corrupti asperiores! Aut enim nesciunt quo debitis ipsum rerum eum reiciendis tempore natus pariatur ab voluptates incidunt ducimus, consectetur magni porro voluptatum dolorum assumenda? Repellat incidunt iure facilis corrupti, molestiae sed enim quod consequatur obcaecati maiores nobis quae commodi consequuntur illo voluptatibus molestias modi qui magnam dolor! Labore ab natus necessitatibus aperiam, molestias modi eius a dicta cumque velit inventore et quaerat pariatur deserunt veritatis, nulla quasi fugiat quidem vel maiores iusto numquam animi, eveniet harum. Corporis natus esse consequuntur minus excepturi possimus nam consectetur aut cumque itaque inventore quam nulla, atque magni numquam illum ullam iste animi. Deserunt, ea? Ut quo provident similique nisi reprehenderit. Temporibus doloribus esse voluptates iste sed ad. Maiores laudantium aliquid veritatis, eos et nostrum vitae in voluptatibus voluptate quo enim eaque quam harum explicabo cupiditate cum expedita porro officia! Delectus praesentium sed recusandae quibusdam fuga cumque possimus laudantium obcaecati vero eligendi. Non ratione provident sint dolor? Officiis, maiores? Libero nemo ratione molestias aut sapiente modi fugit temporibus corrupti. Cumque, eum velit aperiam in dolores aut quod nulla veritatis vel ad quis ab delectus, rerum saepe quibusdam reiciendis ratione. Laboriosam quam officia quaerat necessitatibus sint sit cupiditate, minus quae omnis rem, consequatur dolores iure? Nam praesentium ipsa ab fugiat ea maxime, recusandae quae non repellat perspiciatis amet ad similique quaerat sequi soluta in, tempore aliquid neque!</p>
+  <div class="wrapper">
+        <div class="params">
+          <MyRangeSlider
+          :lastLocation.sync="lastLocation"
+          :firstLocation.sync="firstLocation"
+          :minLocation="1"
+          :maxLocation="this.MAX_LOCATION"
+          @sliderOne="CHANGE_FIRTST_LOCATION"
+          @sliderTwo="CHANGE_LAST_LOCATION"
+          />
+        <MySearch
+        />
+    </div>
+        <div class="title">
+            <h1>Локации мультсериала Рик и Морти</h1>
+        </div>
+    <div class="locations">
+      <h1>{{this.FIRST_LOCATION}} - {{this.LAST_LOCATION}}</h1>
+      <div class="location__content">
+      <LocationsList
+      v-for="location in LOCATIONS"
+      :key="location.id"
+      :location="location"
+      />
+        </div>
+      <div class="location__footer">
+        <Paginate
+        :counts="COUNTS"
+        @changePage="CHANGE_PAGE"
+        :currentPage.sync="currentPage"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import { mapActions, mapGetters } from 'vuex'
+import LocationsList from '../components/locations/locationsList.vue'
+import Paginate from '../components/UI/Paginate.vue'
 
+export default {
+  components:{LocationsList, Paginate},
+  data(){
+    return{
+      currentPage: 1,
+      firstLocation: 1,
+      lastLocation: 126
+    }
+  },
+  computed:{
+    ...mapGetters({
+      LOCATIONS: 'locations/LOCATIONS',
+      COUNTS: 'locations/COUNTS',
+      FIRST_LOCATION: 'locations/FIRST_LOCATION',
+      LAST_LOCATION: 'locations/LAST_LOCATION',
+      MAX_LOCATION: 'locations/MAX_LOCATION'
+    })
+  },
+  methods:{
+    ...mapActions({
+      GET_LOCATIONS_FROM_API: 'locations/GET_LOCATIONS_FROM_API',
+      CHANGE_PAGE: 'locations/CHANGE_PAGE',
+      CHANGE_FIRTST_LOCATION: 'locations/CHANGE_FIRTST_LOCATION',
+      CHANGE_LAST_LOCATION: 'locations/CHANGE_LAST_LOCATION'
+    })
+  },
+  mounted(){
+    this.GET_LOCATIONS_FROM_API()
+  },
+  watch:{
+    'currentPage': function(){
+      this.$router.push({name:'locations', query:{
+        page: this.currentPage
+      }})
+    }
+  }
 }
 </script>
 
 <style>
-
+.locations {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.location__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>

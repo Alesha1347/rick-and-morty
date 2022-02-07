@@ -17,8 +17,8 @@ export default {
     background-color: black;
     opacity: 0.8;
     position: absolute;
-    width: 1300px;
-    height: 1300px;
+    width: 100%;
+    height: 100%;
 }
 .spinner__inner{
     display: flex;

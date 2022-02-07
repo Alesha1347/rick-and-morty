@@ -10,19 +10,26 @@
         @searchCharacters="SEARCH_TERM"
         />
     </div>
+        <div class="title">
+            <h1>Персонажи мультсериала Рик и Морти</h1>
+        </div>
       <div class="characters">
+        <div class="characters__content">
         <MySpinner v-if="this.LOADED"/>
         <CharactersList
         v-for="character in CHARACTERS"
         :key="character.id"
         :character="character"
         />
-      </div>
+          </div>
+        <div class="characters__footer">
         <Paginate
-      class="pag"
       :counts="COUNTS"
       @changePage ="CHANGE_PAGE"
+      :currentPage.sync="currentPage"
       />
+        </div>
+      </div>
   </div>
 </template>
 
@@ -41,7 +48,8 @@ export default {
         {name: 'Живы', value:'Alive'},
         {name: 'Мертвы', value:'Dead'},
         {name: 'Неизвестно', value:'unknown'},
-      ]
+      ],
+        currentPage: 1
     }
   },
   computed:{
@@ -49,7 +57,8 @@ export default {
         CHARACTERS: 'characters/CHARACTERS',
         COUNTS: 'characters/COUNTS',
         STATUS: 'characters/STATUS',
-        LOADED: 'characters/LOADED'
+        LOADED: 'characters/LOADED',
+        SEARCH: 'characters/SEARCH'
     })
   },
   methods:{
@@ -65,13 +74,29 @@ export default {
   },
   watch:{
     'STATUS': function(){
+      this.currentPage = 1
       this.statusOptions.forEach(item =>{
         if(item.value === this.STATUS){
           this.selected = item.name
+          this.$router.push({name: 'characters', query:{
+                status: this.STATUS
+          }})
         }
       })
+    },
+    'SEARCH': function(){
+      this.currentPage = 1
+      this.$router.push({name: 'characters', query:{
+        search: this.SEARCH
+      }})
+    },
+        'currentPage': function(){
+      this.$router.push({name: 'characters', query:{
+        ...this.$route.query,
+          page: this.currentPage,
+      }})
     }
-  }
+  },
 }
 </script>
 
@@ -79,20 +104,29 @@ export default {
 <style>
 .characters {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   background-color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
+  justify-content: center;
+  position: relative;
 }
 .params{
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.pag{
-  background-color: white;
+.title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.characters__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.characters__footer {
   margin: 0 auto;
-  padding-top: 20px;
 }
 </style>

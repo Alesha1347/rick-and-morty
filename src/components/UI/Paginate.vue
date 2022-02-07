@@ -1,7 +1,7 @@
 <template>
   <div class="pagination" @click="changePage(currentPage)">
       <b-pagination
-        v-model="currentPage"
+        v-model="currentPageChange"
         :total-rows="counts"
         :per-page="20"
         aria-controls="my-table"
@@ -13,41 +13,25 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-    props: ['counts'],
-    data(){
-        return{
-            currentPage: 1
-        }
-    },
+    props: ['counts', 'currentPage'],
     computed:{
         ...mapGetters({
             STATUS: 'characters/STATUS',
             SEARCH: 'characters/SEARCH'
-        })
+        }),
+        currentPageChange:{
+            get(){
+                return this.currentPage
+            },
+            set(newCurrentPage){
+                this.$emit('update:currentPage', newCurrentPage)
+            }
+        }
     },
     methods:{
         changePage(currentPage){
+            this.$emit('update:currentPage', currentPage)
             this.$emit('changePage', currentPage)
-        }
-    },
-    watch:{
-        'STATUS': function(){
-            this.currentPage = 1
-            this.$router.push({name: 'characters', query:{
-                status: this.STATUS
-            }})
-        },
-        'SEARCH': function(){
-            this.currentPage = 1
-            this.$router.push({name: 'characters', query:{
-                search: this.SEARCH
-            }})
-        },
-        'currentPage': function(){
-            this.$router.push({name: 'characters', query:{
-                ...this.$route.query,
-                page: this.currentPage,
-            }})
         }
     }
 }
@@ -58,6 +42,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
 }
 .pagination .page-item{
     margin-right: 10px;
