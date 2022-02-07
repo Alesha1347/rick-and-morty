@@ -61,9 +61,9 @@ const locations = {
                 console.log(1)
                 let res = []
                 for(let i = this.state.locations.firstLocation; i < this.state.locations.lastLocation; i++){
-                    this.res.push(i)
+                    res.push(i)
                 }
-                axios.get(`https://rickandmortyapi.com/api/location/${res.map(n => n.n)}`)
+                axios.get(`https://rickandmortyapi.com/api/location/${res.map(n => n)}`)
                 .then(locations =>{
                     commit('SET_LOCATIONS_NUMBER', locations.data.results)
                     commit('SET_COUNTS', locations.data.info.count)

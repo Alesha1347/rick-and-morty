@@ -94,6 +94,7 @@ export default {
 <style>
 .range-slider {
     width: 40vmin;
+    margin-top: -80px;
 }
 .range-slider-inputs {
     width: 100%;

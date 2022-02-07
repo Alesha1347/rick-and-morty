@@ -38,77 +38,38 @@ const characters = {
     actions:{
         GET_CHARACTERS_FROM_API({commit}){
             this.state.characters.isLoaded = true
-            axios.get(`https://rickandmortyapi.com/api/character/?page=${this.state.characters.page}`)
+            let query = `https://rickandmortyapi.com/api/character/`
+            if(this.state.characters.page){
+                query += '?page=' + this.state.characters.page
+            } if(this.state.characters.status !== 'All' && this.state.characters.status){
+                query += '&status=' + this.state.characters.status
+            } if(this.state.characters.searchTerm){
+                query += '&name=' + this.state.characters.searchTerm
+            }
+            console.log(query)
+            axios.get(query)
             .then(characters => {
                 commit('SET_CHARACTERS', characters.data.results)
                 commit('SET_COUNTS', characters.data.info.count)
+                console.log(characters.data.info.count)
             })
             .catch(err => console.log(err))
             .finally(() => this.state.characters.isLoaded = false)
         },
         CHANGE_PAGE({dispatch, commit}, pageNum){
             commit('SET_PAGE', pageNum)
-            if(this.state.characters.status && this.state.characters.searchTerm){
-                dispatch('GET_CHARACTERS_SEARCH_STATUS_FROM_API')
-            } else if(this.state.characters.status){
-                dispatch('GET_STATUS_CHARACTERS_FROM_API')
-            } else if(this.state.characters.searchTerm){
-                dispatch('SEARCH_CHARACTERS_FROM_API')
-            } else {
-                dispatch('GET_CHARACTERS_FROM_API')
-            }
-        },
-        GET_STATUS_CHARACTERS_FROM_API({dispatch, commit}){
-            if(this.state.characters.status !== 'All'){
-                this.state.characters.isLoaded = true
-                axios.get(`https://rickandmortyapi.com/api/character/?page=${this.state.characters.page}&status=${this.state.characters.status}`)
-                .then(characters =>{
-                    commit('SET_COUNTS', characters.data.info.count)
-                    commit('SET_STATUS_CHARACTERS', characters.data.results)
-                    
-                })    
-                .finally(() => this.state.characters.isLoaded = false)
-            } else {
-                dispatch('GET_CHARACTERS_FROM_API')
-            }
+            dispatch('GET_CHARACTERS_FROM_API')
         },
         CHANGE_STATUS({dispatch, commit}, status){
             this.state.characters.page = 1
             commit('SET_STATUS', status)
-            dispatch('GET_STATUS_CHARACTERS_FROM_API')
-        },
-        SEARCH_CHARACTERS_FROM_API({dispatch, commit}){
-            if(this.state.characters.searchTerm){
-                this.state.characters.isLoaded = true
-                axios.get(`https://rickandmortyapi.com/api/character/?page=${this.state.characters.page}&name=${this.state.characters.searchTerm}`)
-                .then(characters =>{
-                    commit('SET_SEARCH_CHARACTERS', characters.data.results)
-                    commit('SET_COUNTS', characters.data.info.count)
-                    console.log(characters.data.results)
-                }) 
-                .finally(() => this.state.characters.isLoaded = false)   
-            } else {
-                dispatch('GET_CHARACTERS_FROM_API')
-            }
+            dispatch('GET_CHARACTERS_FROM_API')
         },
         SEARCH_TERM({dispatch, commit}, searchTerm){
             this.state.characters.page = 1
             commit('SET_SEARCH_TERM', searchTerm)
-            dispatch('SEARCH_CHARACTERS_FROM_API')
+            dispatch('GET_CHARACTERS_FROM_API')
         },
-        GET_CHARACTERS_SEARCH_STATUS_FROM_API({dispatch, commit}){
-            if(this.state.characters.status && this.state.characters.searchTerm){
-                this.state.characters.isLoaded = true
-                axios.get(`https://rickandmortyapi.com/api/character/?page=${this.state.characters.page}&name=${this.state.characters.searchTerm}&status=${this.state.characters.status}`)
-                .then(characters =>{
-                    commit('SET_COUNTS', characters.data.info.count)
-                    commit('SET_SEARCH_STATUS_CHARACTERS', characters.data.results)
-                })
-                .finally(() => this.state.characters.isLoaded = false)
-            } else {
-                dispatch('GET_CHARACTERS_FROM_API')
-            }
-        }
     },
     getters:{
         CHARACTERS: state => state.characters,
@@ -122,3 +83,6 @@ const characters = {
 }
 
 export default characters
+
+
+

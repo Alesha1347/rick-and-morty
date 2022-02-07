@@ -96,7 +96,7 @@ export default {
           page: this.currentPage,
       }})
     }
-  },
+  }
 }
 </script>
 
