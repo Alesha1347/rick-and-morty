@@ -6,9 +6,10 @@ const locations = {
         counts: 0,
         page: 1,
         firstLocation: 1,
-        lastLocation: 0,
+        lastLocation: 126,
         maxLocation: 0,
-        difference: 0
+        searchTerm: '',
+        isLoaded: false
     },
     mutations:{
         SET_LOCATIONS(state, locations){
@@ -21,62 +22,59 @@ const locations = {
         SET_PAGE(state, pageNum){
             state.page = pageNum
         },
-        SET_LAST_LOCATION(state, lastLocation){
-            state.lastLocation = lastLocation
-        },
+        // SET_LAST_LOCATION(state, lastLocation){
+        //     state.lastLocation = lastLocation
+        // },
         CHANGE_FIRST_LOCATION(state, firstLocation){
             state.firstLocation = firstLocation
         },
         CHANGE_LAST_LOCATION(state, lastLocation){
             state.lastLocation = lastLocation
         },
-        SET_LOCATIONS_NUMBER(state, locationNum){
-            state.locations = locationNum
-        },
-        SET_DIFFERENCE(state, difference){
-            state.difference = difference
+        SET_SEARCH_TERM(state, searchTerm){
+            state.searchTerm = searchTerm
         }
     },
     actions:{
         GET_LOCATIONS_FROM_API({commit}){
-            axios.get(`https://rickandmortyapi.com/api/location/?page=${this.state.locations.page}`)
+            this.state.characters.isLoaded = true
+            let query = `https://rickandmortyapi.com/api/location/`
+            if(this.state.locations.page){
+                query += '?page=' + this.state.locations.page
+            } 
+            if(this.state.locations.searchTerm){
+                query += '&name=' + this.state.locations.searchTerm
+            }
+            if(this.state.locations.lastLocation - this.state.locations.firstLocation < 125){
+                console.log(123)
+                query += ''
+            }
+            axios.get(query)
             .then(locations => {
                 commit('SET_LOCATIONS', locations.data.results)
                 commit('SET_COUNTS', locations.data.info.count)
-                commit('SET_LAST_LOCATION', locations.data.info.count)
-                commit('SET_DIFFERENCE', locations.data.info.count - 1)
-                console.log(locations.data.info)
+                // commit('SET_LAST_LOCATION', locations.data.info.count)
+                console.log(locations.data.results[0])
             })
+            .catch((err) => console.log(err))
+            .finally(() => this.state.characters.isLoaded = false)
         },
         CHANGE_PAGE({dispatch, commit}, pageNum){
             commit('SET_PAGE', pageNum)
-            if(this.state.locations.difference > this.state.locations.lastLocation - this.state.locations.firstLocation){
-                dispatch('GET_LOCATIONS_NUMBER_FROM_API')
-            } else {
-                dispatch('GET_LOCATIONS_FROM_API')
-            }
+            dispatch('GET_LOCATIONS_FROM_API')
         },
-        GET_LOCATIONS_NUMBER_FROM_API({dispatch, commit}){
-            if(this.state.locations.difference > this.state.locations.lastLocation - this.state.locations.firstLocation){
-                console.log(1)
-                let res = []
-                for(let i = this.state.locations.firstLocation; i < this.state.locations.lastLocation; i++){
-                    res.push(i)
-                }
-                axios.get(`https://rickandmortyapi.com/api/location/${res.map(n => n)}`)
-                .then(locations =>{
-                    commit('SET_LOCATIONS_NUMBER', locations.data.results)
-                    commit('SET_COUNTS', locations.data.info.count)
-                })
-            } else {
-                dispatch('GET_LOCATIONS_FROM_API')
-            }
-        },
-        CHANGE_FIRTST_LOCATION({commit}, firstLocation){
+        CHANGE_FIRST_LOCATION({ commit}, firstLocation){
             commit('CHANGE_FIRST_LOCATION', firstLocation)
+            // dispatch('GET_LOCATIONS_FROM_API')
         },
-        CHANGE_LAST_LOCATION({commit}, lastLocation){
+        CHANGE_LAST_LOCATION({ commit}, lastLocation){
             commit('CHANGE_LAST_LOCATION', lastLocation)
+            // dispatch('GET_LOCATIONS_FROM_API')
+        },
+        SEARCH_TERM({dispatch, commit}, searhTerm){
+            this.state.locations.page = 1
+            commit('SET_SEARCH_TERM', searhTerm)
+            dispatch('GET_LOCATIONS_FROM_API')
         }
     },
     getters:{
@@ -84,7 +82,9 @@ const locations = {
         COUNTS: state => state.counts,
         FIRST_LOCATION: state => state.firstLocation,
         LAST_LOCATION: state => state.lastLocation,
-        MAX_LOCATION: state => state.maxLocation
+        MAX_LOCATION: state => state.maxLocation,
+        ID: state => id => state.locations.find(location => location.id === id),
+        LOADED: state => state.isLoaded
     },
     namespaced: true
 }

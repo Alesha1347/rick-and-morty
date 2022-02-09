@@ -21,10 +21,10 @@ export default {
     height: 100%;
 }
 .spinner__inner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 .spinner .spinner-grow{
     color: rgb(245, 172, 35);

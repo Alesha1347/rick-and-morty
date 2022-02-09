@@ -1,15 +1,15 @@
 <template>
-  <div class="character__page">
-          <div class="character__close" @click="backPage"><b-icon class="character__arrow--left" icon="arrow-return-left"></b-icon> Назад</div>
-      <h1 class="character__page-name">{{ character.name }}</h1>
-      <div class="character">
-          <img :src="character.image" class="character__page-img">
-          <div class="character__page-info">
-              <span class="charecter__brief">Краткая информация:</span>
-              <span class="character__created"><span class="character__params">Создан</span> {{ character.created }}</span>
-              <span class="character__gender"><span class="character__params">Пол</span> {{ character.gender }}</span>
-              <span class="character__species"><span class="character__params">Вид</span> {{ character.species }}</span>
-              <span class="character__status"><span class="character__params">Статус</span> {{ character.status }}</span>
+  <div class="item__page">
+          <div class="item__close" @click="backPage"><b-icon class="item__arrow--left" icon="arrow-return-left"></b-icon> Назад</div>
+      <h1 class="item__page-name">{{ character.name }}</h1>
+      <div class="item">
+          <img :src="character.image" class="item__page-img">
+          <div class="item__page-info">
+              <span class="item__brief">Краткая информация:</span>
+              <span class="item__created"><span class="item__params">Создан</span> {{ character.created }}</span>
+              <span class="item__gender"><span class="item__params">Пол</span> {{ character.gender }}</span>
+              <span class="item__species"><span class="item__params">Вид</span> {{ character.species }}</span>
+              <span class="item__status"><span class="item__params">Статус</span> {{ character.status }}</span>
           </div>
       </div>
   </div>
@@ -44,23 +44,23 @@ export default {
 </script>
 
 <style>
-.character__page {
+.item__page {
     background-color: white;
     margin-top: 20px;
     text-align: center;
     border-radius: 10px;
     position: relative;
 }
-.character {
+.item {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     align-items: center;
 }
-.character__top {
+.item__top {
     display: flex;
 }
-.character__close {
+.item__close {
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
@@ -70,55 +70,55 @@ export default {
     top: 10px;
     left: 10px;
 }
-.character__close:hover{
+.item__close:hover{
     color: orange;
 }
-.character__arrow--left{
+.item__arrow--left{
     font-size: 15px;
 }
-.character__page-img {
+.item__page-img {
     width: 350px;
     height: 400px;
     border-radius: 10px;
     border: 2px solid black;
 }
-.character__page-info {
+.item__page-info {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
     width: 250px;
     height: 342px;
 }
-.charecter__brief {
+.item__brief {
     background-color: darkslategrey;
     color: white;
     font-weight: bold;
     padding: 10px;
     margin-bottom: 20px;
 }
-.character__params{
+.item__params{
     font-weight: bold;
     margin-bottom: 5px;
 }
-.character__created {
+.item__created {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid black;
     margin-bottom: 20px;
 }
-.character__gender {
+.item__gender {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid black;
     margin-bottom: 20px;
 }
-.character__species {
+.item__species {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid black;
     margin-bottom: 20px;
 }
-.character__status {
+.item__status {
     display: flex;
     flex-direction: column;
 }

@@ -1,11 +1,13 @@
 <template>
   <div class="location__item">
+      <router-link :to="{name: 'locationPage', params:{id: location.id}}">
       <img class="location__img">
       <div class="location__info">
       <div class="location__name">{{ location.name }}</div>
     <div class="location__number">Локация #{{ location.id }}</div>
       <div class="location__type">type: {{ location.type }}</div>
       </div>
+      </router-link>
   </div>
 </template>
 

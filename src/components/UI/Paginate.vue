@@ -13,6 +13,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+    name: 'MyPaginate',
     props: ['counts', 'currentPage'],
     computed:{
         ...mapGetters({

@@ -14,8 +14,8 @@
             <h1>Персонажи мультсериала Рик и Морти</h1>
         </div>
       <div class="characters">
-        <div class="characters__content">
         <MySpinner v-if="this.LOADED"/>
+        <div class="characters__content">
         <CharactersList
         v-for="character in CHARACTERS"
         :key="character.id"
@@ -23,7 +23,7 @@
         />
           </div>
         <div class="characters__footer">
-        <Paginate
+        <MyPaginate
       :counts="COUNTS"
       @changePage ="CHANGE_PAGE"
       :currentPage.sync="currentPage"
@@ -36,10 +36,9 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import CharactersList from '../components/characters/CharactersList.vue'
-import Paginate from '../components/UI/Paginate.vue'
 
 export default {
-  components:{CharactersList, Paginate},
+  components:{CharactersList},
   data(){
     return{
       selected: 'Выберите статус',

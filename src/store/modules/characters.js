@@ -46,12 +46,10 @@ const characters = {
             } if(this.state.characters.searchTerm){
                 query += '&name=' + this.state.characters.searchTerm
             }
-            console.log(query)
             axios.get(query)
             .then(characters => {
                 commit('SET_CHARACTERS', characters.data.results)
                 commit('SET_COUNTS', characters.data.info.count)
-                console.log(characters.data.info.count)
             })
             .catch(err => console.log(err))
             .finally(() => this.state.characters.isLoaded = false)

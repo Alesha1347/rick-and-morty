@@ -5,6 +5,7 @@ import Characters from '@/pages/Characters'
 import Locations from '@/pages/Locations'
 import Episodes from '@/pages/Episodes'
 import CharacterPage from '@/components/characters/CharacterPage'
+import LocationPage from '@/components/locations/LocationPage'
 
 Vue.use(VueRouter)
 
@@ -20,20 +21,25 @@ const routes = [
         name: 'characters'
       },
       {
+        path:'/characters/:id',
+        component: CharacterPage,
+        name: 'characterPage'
+      },
+      {
         path:'/locations',
         component: Locations,
         name: 'locations'
       },
       {
+        path:'/locations/:id',
+        component: LocationPage,
+        name: 'locationPage'
+      },
+      {
         path:'/episodes',
         component: Episodes,
         name: 'episodes'
-      },
-      {
-        path:'/characters/:id',
-        component: CharacterPage,
-        name: 'characterPage'
-      } 
+      }
     ]
   }
 ]
