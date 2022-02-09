@@ -16,10 +16,6 @@
           <router-link class="menu__link" active-class="active" :to="{name: 'episodes'}">Эпизоды</router-link>
     </b-navbar-nav>
   </b-navbar>
-                <!-- <router-link 
-                class='menu__link menu__link--active' :to="{name: 'characters'}">Персонажи</router-link>
-                <router-link class="menu__link" :to="{name: 'locations'}">Локации</router-link>
-                <router-link class="menu__link" :to="{name: 'episodes'}">Эпизоды</router-link> -->
             </ul>
           </div>
       </div>

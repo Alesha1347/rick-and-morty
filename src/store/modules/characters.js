@@ -50,6 +50,7 @@ const characters = {
             .then(characters => {
                 commit('SET_CHARACTERS', characters.data.results)
                 commit('SET_COUNTS', characters.data.info.count)
+                console.log(characters.data.results)
             })
             .catch(err => console.log(err))
             .finally(() => this.state.characters.isLoaded = false)
@@ -74,7 +75,7 @@ const characters = {
         COUNTS: state => state.counts,
         STATUS: state => state.status,
         SEARCH: state => state.searchTerm,
-        ID: state => id => state.characters.find(character => character.id === id),
+        ID: state => id => state.characters.find(character => character.id == id),
         LOADED: state => state.isLoaded
     },
     namespaced: true

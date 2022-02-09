@@ -13,14 +13,13 @@
 </template>
 
 <script>
-
 export default {
-    props:{
-        character:{
-            type: Object,
-            default: () => {}
-        }
+  props:{
+    character:{
+      type: Object,
+      default: () => {}
     }
+  }
 }
 </script>
 

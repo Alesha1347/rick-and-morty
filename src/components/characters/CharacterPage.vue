@@ -20,7 +20,7 @@ import { mapGetters } from 'vuex'
 export default {
     data(){
         return{
-            character: null
+            character: null,
         }
     },
     computed:{
@@ -39,6 +39,12 @@ export default {
     },
     created(){
         this.fetchData()
+        console.log({route:this.$route, id:this.$route.params.id})
+    },
+    watch:{
+        'fetchData': function(){
+            console.log(123)
+        }
     }
 }
 </script>
