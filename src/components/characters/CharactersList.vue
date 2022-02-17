@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="character__item">
-        <router-link :to="{name: 'characterPage', params:{id:character.id}}">
+        <router-link class="character__item-link" :to="{name: 'characterPage', 
+        params:{id:character.id}}">
         <img :src="character.image" alt="" class="character__img">
         <div class="character__info">
           <span class="character__info-name">{{ character.name }}</span>
@@ -29,12 +30,13 @@ export default {
   border-radius: 3px;
   margin: 20px;
   cursor: pointer;
+  width: 200px;
 }
 .character__item:hover{
   box-shadow: 10px 5px 5px black;
 }
 .character__img {
-  max-width: 200px;
+  width: 100%;
   max-height: 200px;
 }
 .character__info {
@@ -46,8 +48,14 @@ export default {
 .character__info-name {
   font-weight: bold;
   color: rgb(214, 145, 16);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .character__info-status {
   color: white;
+}
+.character__item-link{
+  text-decoration: none;
 }
 </style>

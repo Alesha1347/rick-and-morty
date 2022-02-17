@@ -11,8 +11,8 @@
         </div>
         <div class="range-slider-inputs" @mouseover="showPrice" @mouseout="hidePrice">
             <div class="slider-track"></div>
-        <input @mousemove="sliderOne" type="range" :min="this.minLocation" :max="this.maxLocation" value="30" class="slider-1" v-model.number="firstLocationChange">
-        <input @mousemove="sliderTwo" type="range" :min="this.minLocation" :max="this.maxLocation" value="70" class="slider-2" v-model.number="lastLocationChange">
+        <input @mousemove="fillColor" @change="sliderOne" type="range" :min="this.minLocation" :max="this.maxLocation" value="30" class="slider-1" v-model.number="firstLocationChange">
+        <input @mousemove="fillColor" @change="sliderTwo" type="range" :min="this.minLocation" :max="this.maxLocation" value="70" class="slider-2" v-model.number="lastLocationChange">
         </div>
     </div>
 </template>
@@ -24,9 +24,8 @@ export default {
     props:['firstLocation', 'lastLocation', 'maxLocation', 'minLocation'],
     data(){
         return{
-            // firstLocation:1,
-            // lastLocation:155,
-            minGap:0
+            minGap:5,
+            timeout: 0
         }
     },
     computed:{
@@ -61,19 +60,44 @@ export default {
         },
         sliderOne(){
             let myFirstLocation = this.firstLocation
-            if(this.lastLocation - this.firstLocation <= this.minGap){
-                this.firstLocation = this.lastLocation - this.minGap
+            if(this.timeout){
+                clearTimeout(this.timeout)
             }
+            this.$store.state.episodes.isLoaded = true
+            this.timeout = setTimeout(() =>{
             this.$emit('sliderOne', myFirstLocation)
-            this.fillColor()
+            this.$store.state.episodes.isLoaded = false
+            },1000)
+            this.rangeChange()
         },
         sliderTwo(){
             let myLastLocation = this.lastLocation
-            if(this.lastLocation - this.firstLocation <= this.minGap){
-                this.lastLocation = this.firstLocation + this.minGap
+            if(this.timeout){
+                clearTimeout(this.timeout)
             }
+            this.$store.state.episodes.isLoaded = true
+            this.timeout = setTimeout(() =>{
             this.$emit('sliderTwo', myLastLocation)
-            this.fillColor()
+            this.$store.state.episodes.isLoaded = false
+            },1000)
+            this.rangeChange()
+        },
+        rangeChange(){
+            const rangeInput = document.querySelectorAll('.range-slider-inputs input')
+            rangeInput.forEach(input =>{
+                input.addEventListener('input', (e) =>{
+                let minVal = parseInt(rangeInput[0].value)
+                let maxVal = parseInt(rangeInput[1].value)
+
+                if(maxVal - minVal < this.minGap){
+                    if(e.target.className === 'slider-1'){
+                    rangeInput[0].value = maxVal - this.minGap
+                    } else {
+                    rangeInput[1].value = minVal + this.minGap
+                    }
+                }
+                })
+            })
         },
         fillColor(){
             let sliderTrack = document.querySelector('.slider-track')
@@ -93,13 +117,14 @@ export default {
 
 <style>
 .range-slider {
-    width: 40vmin;
+    width: 30vmin;
     margin-top: -80px;
 }
 .range-slider-inputs {
     width: 100%;
     height: 100px;
     position: relative;
+    pointer-events: none;
 }
 .slider-track {
     width: 100%;

@@ -58,11 +58,12 @@ export default {
 <style>
 .select{
     position: relative;
-    width: 200px;
+    width: 250px;
     margin-bottom: 40px;
     background-color: white;
     border-radius: 10px;
     font-size: 18px;
+    z-index: 10
 }
 .select-title{
     cursor: pointer;
@@ -71,6 +72,9 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .choose{
     margin: 0px;
@@ -89,6 +93,7 @@ export default {
     right: 0;
     width: 100%;
     text-align: left;
+    z-index: 20;
 }
 
 </style>

@@ -13,29 +13,52 @@
         <span class="item__gender"><span class="item__params">Пол</span> {{ character.gender }}</span>
         <span class="item__species"><span class="item__params">Вид</span> {{ character.species }}</span>
         <span class="item__status"><span class="item__params">Статус</span> {{ character.status }}</span>
+        <span class="item__origin"><span class="item__params">Родился
+          </span> 
+          <router-link v-if="this.origin.name" class="item__origin-link" :to="{name: 'locationPage', params:{id: this.origin.id }}">
+          {{ this.origin.name }}
+          </router-link>
+          <span v-else>Неизвестно</span>
+          </span>
+        <span class="item__location"><span class="item__params">Проживает</span> 
+        <router-link class="item__location-link" :to="{name: 'locationPage', params:{id: this.location.id }}">
+        {{ this.location.name}}
+        </router-link>
+        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
       character: {},
+      location: [],
+      origin: []
     }
-  },
-  computed: {
-    // ...mapGetters({
-    //     ID: 'characters/ID'
-    // })
   },
   methods: {
     getData() {
-      this.$api.get('character/'+this.$route.params.id).then((response) => {
+      this.$api.get('character/'+this.$route.params.id)
+      .then((response) => {
         this.character = response.data;
-      });
+        this.location = this.character['location'].url.slice(41)
+        this.origin = this.character['origin'].url.slice(41)
+      })
+      .then(() =>{
+        this.$api.get('location/' + this.character['location'].url.slice(41))
+        .then(response =>{
+          this.location = response.data
+        })
+      })
+      .then(() =>{
+        this.$api.get('location/' + this.character['origin'].url.slice(41))
+        .then(response =>{
+          this.origin = response.data
+        })
+      })
     },
     backPage() {
       this.$router.go(-1)
@@ -43,11 +66,6 @@ export default {
   },
   created() {
     this.getData();
-  },
-  watch: {
-    'fetchData': function () {
-      console.log(123)
-    }
   }
 }
 </script>
@@ -103,7 +121,7 @@ export default {
   flex-direction: column;
   border: 2px solid black;
   width: 250px;
-  height: 342px;
+  height: 500px;
 }
 
 .item__brief {
@@ -143,5 +161,33 @@ export default {
 .item__status {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.item__origin{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.item__location{
+  display: flex;
+  flex-direction: column;
+}
+.item__origin-link{
+  text-decoration: none;
+  font-weight: bold;
+  color: orange;
+}
+.item__origin-link:hover{
+  color: black;
+}
+.item__location-link{
+  text-decoration: none;
+  font-weight: bold;
+  color: orange;
+}
+.item__location-link:hover{
+  color: black;
 }
 </style>

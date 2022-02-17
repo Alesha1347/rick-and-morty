@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="params">
+      <div class="range__episodes">
+        <h2 class="range__name">Эпизоды:</h2>
           <MyRangeSlider
         :lastLocation.sync="lastEpisodes"
         :firstLocation.sync="firstEpisodes"
@@ -9,11 +11,12 @@
         @sliderOne="CHANGE_FIRST_EPISODES"
         @sliderTwo="CHANGE_LAST_EPISODES"
         />
+      </div>
         <MySearch
         @searchCharacters="SEARCH_TERM"
         />
     </div>
-    <div class="title">
+    <div class="title title__episodes">
       <h1>Эпизоды мультсериала Рик и Морти</h1>
     </div>
       <div class="episodes">
@@ -30,6 +33,7 @@
         @changePage="CHANGE_PAGE"
         :counts="COUNTS"
         :currentPage.sync="currentPage"
+        v-if="this.NUM_EPISODES.length == 0"
         />
       </div>
   </div>
@@ -46,7 +50,7 @@ export default {
     return{
       currentPage: 1,
       firstEpisodes: 1,
-      lastEpisodes: 126
+      lastEpisodes: 51
     }
   },
   computed:{
@@ -54,7 +58,9 @@ export default {
       EPISODES: 'episodes/EPISODES',
       COUNTS: 'episodes/COUNTS',
       LOADED: 'episodes/LOADED',
-      MAX_EPISODES: 'episodes/MAX_EPISODES'
+      MAX_EPISODES: 'episodes/MAX_EPISODES',
+      SEARCH: 'episodes/SEARCH',
+      NUM_EPISODES: 'episodes/NUM_EPISODES'
     })
   },
   methods:{
@@ -68,11 +74,33 @@ export default {
   },
   mounted(){
     this.GET_EPISODES_FROM_API()
+  },
+  watch:{
+    'SEARCH': function(){
+      this.currentPage = 1
+      this.$router.push({name: 'episodes', query:{
+        search: this.SEARCH
+      }})
+    },
+        'currentPage': function(){
+      this.$router.push({name: 'episodes', query:{
+        ...this.$route.query,
+          page: this.currentPage,
+      }})
+    }
   }
 }
 </script>
 
 <style>
+.range__episodes {
+  display: flex;
+  flex-direction: column;
+}
+.range__name {
+  color: white;
+  font-size: 20px;
+}
 .episodes {
   display: flex;
   flex-direction: column;
@@ -81,9 +109,12 @@ export default {
   justify-content: center;
   position: relative;
 }
+.title__episodes{
+ margin-top: -30px;
+}
 .episodes__content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 </style>

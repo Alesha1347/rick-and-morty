@@ -21,21 +21,24 @@
       </div>
       <router-view></router-view>
         </div>
+          <Footer/>
     </div>
 </template>
 
 <script>
+import Footer from './Footer.vue'
 export default {
-  data(){
-    return{
-      isActive: false
-    }
-  },
-  methods:{
-    myFilter(){
-      this.isActive = !this.isActive
-    }
-  }
+  components:{Footer}
+  // data(){
+  //   return{
+  //     isActive: false
+  //   }
+  // },
+  // methods:{
+  //   myFilter(){
+  //     this.isActive = !this.isActive
+  //   }
+  // }
 }
 </script>
 

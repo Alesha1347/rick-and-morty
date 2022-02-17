@@ -6,6 +6,7 @@ import Locations from '@/pages/Locations'
 import Episodes from '@/pages/Episodes'
 import CharacterPage from '@/components/characters/CharacterPage'
 import LocationPage from '@/components/locations/LocationPage'
+import EpisodePage from '@/components/episodes/EpisodePage'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
         path:'/episodes',
         component: Episodes,
         name: 'episodes'
+      },
+      {
+        path:'/episodes/:id',
+        component: EpisodePage,
+        name: 'episodePage'
       }
     ]
   }

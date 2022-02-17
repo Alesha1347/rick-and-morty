@@ -112,7 +112,6 @@ export default {
 .params{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 .title {
   color: white;

@@ -1,10 +1,12 @@
 <template>
     <div class="episodes__item">
+        <router-link class="episodes__item-link" :to="{name: 'episodePage', params: {id: episodes.id}}">
       <img class="episodes__img">
       <div class="episodes__info">
       <div class="episodes__name">{{ episodes.name }}</div>
     <div class="episodes__date">Дата выпуска: {{ episodes.air_date }}</div>
       </div>
+        </router-link>
   </div>
 </template>
 
@@ -25,13 +27,14 @@ export default {
   border-radius: 3px;
   margin: 20px;
   cursor: pointer;
+  width: 250px;
 }
 .episodes__item:hover{
   box-shadow: 10px 5px 5px black;
 }
 .episodes__img {
     background-image: url('../../assets/poster.jpg');
-    width: 250px;
+    width: 100%;
     height: 250px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,9 +49,18 @@ export default {
 .episodes__name {
     font-weight: bold;
     color: rgb(214, 145, 16);
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .episodes__date {
     color: white;
     font-weight: bold;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.episodes__item-link{
+    text-decoration: none;
 }
 </style>

@@ -20,13 +20,26 @@ export default {
     name: 'MySearch',
     data(){
         return{
-            value: ''
+            value: '',
+            timeout: 0,
         }
     },
     methods:{
         searchCharacters(value){
+            if(this.timeout){
+                clearTimeout(this.timeout)
+            }
+            this.$store.state.characters.isLoaded = true
+            this.$store.state.locations.isLoaded = true
+            this.$store.state.episodes.isLoaded = true
+            this.timeout = setTimeout(() =>{
             this.$emit('searchCharacters', value)
-        }
+            this.$store.state.characters.isLoaded = false
+            this.$store.state.locations.isLoaded = false
+            this.$store.state.episodes.isLoaded = true
+            console.log(value)
+            }, 1000)
+        },
     }
 }
 </script>

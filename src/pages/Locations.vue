@@ -1,14 +1,11 @@
 <template>
   <div class="wrapper">
         <div class="params">
-          <MyRangeSlider
-          :firstLocation.sync="firstLocation"
-          :lastLocation.sync="lastLocation"
-          :minLocation="1"
-          :maxLocation="this.MAX_LOCATION"
-          @sliderOne="CHANGE_FIRST_LOCATION"
-          @sliderTwo="CHANGE_LAST_LOCATION"
-          />
+          <MySelect
+        :categories="statusOptions"
+        @chooseSelect="CHANGE_DIMENSION"
+        :selected="selected"
+        />
         <MySearch
         @searchCharacters="SEARCH_TERM"
         />
@@ -18,7 +15,6 @@
         </div>
     <div class="locations">
         <MySpinner v-if="this.LOADED"/>
-      <h1>{{this.FIRST_LOCATION}} - {{this.LAST_LOCATION}}</h1>
       <div class="location__content">
       <LocationsList
       v-for="location in LOCATIONS"
@@ -46,39 +42,69 @@ export default {
   data(){
     return{
       currentPage: 1,
-      firstLocation: this.$store.state.locations.firstLocation,
-      lastLocation: this.$store.state.locations.lastLocation
+      selected: 'Выберите измерение',
+      statusOptions:[
+        {name: 'Все', value:'All'},
+        {name: 'Dimension C-137', value:'Dimension C-137'},
+        {name: 'Unknown', value:'unknown'},
+        {name: 'Replacement Dimension', value:'Replacement Dimension'},
+        {name: 'Fantasy Dimension', value:'Fantasy Dimension'},
+        {name: 'Dimension 5-126', value:'Dimension 5-126'},
+        {name: 'Testicle Monster Dimension', value:'Testicle Monster Dimension'},
+        {name: 'Cromulon Dimension', value:'Cromulon Dimension'},
+        {name: 'Dimension C-500A', value:'Dimension C-500A'},
+        {name: 'Dimension K-83', value:'Dimension K-83'},
+        {name: 'Dimension J19ζ7', value:'Dimension J19ζ7'},
+        {name: 'Eric Stoltz Mask Dimension', value:'Eric Stoltz Mask Dimension'},
+        {name: 'Pizza Dimension', value:'Pizza Dimension'},
+      ]
     }
   },
   computed:{
     ...mapGetters({
       LOCATIONS: 'locations/LOCATIONS',
       COUNTS: 'locations/COUNTS',
-      FIRST_LOCATION: 'locations/FIRST_LOCATION',
-      LAST_LOCATION: 'locations/LAST_LOCATION',
-      MAX_LOCATION: 'locations/MAX_LOCATION',
-      LOADED: 'locations/LOADED'
+      LOADED: 'locations/LOADED',
+      SEARCH: 'locations/SEARCH',
+      DIMENSION: 'locations/DIMENSION'
     })
   },
   methods:{
     ...mapActions({
       GET_LOCATIONS_FROM_API: 'locations/GET_LOCATIONS_FROM_API',
       CHANGE_PAGE: 'locations/CHANGE_PAGE',
-      CHANGE_FIRST_LOCATION: 'locations/CHANGE_FIRST_LOCATION',
-      CHANGE_LAST_LOCATION: 'locations/CHANGE_LAST_LOCATION',
-      SEARCH_TERM: 'locations/SEARCH_TERM'
+      SEARCH_TERM: 'locations/SEARCH_TERM',
+      CHANGE_DIMENSION: 'locations/CHANGE_DIMENSION'
     })
   },
   mounted(){
     this.GET_LOCATIONS_FROM_API()
   },
-  // watch:{
-  //   'currentPage': function(){
-  //     this.$router.push({name:'locations', query:{
-  //       page: this.currentPage
-  //     }})
-  //   }
-  // }
+watch:{
+    'DIMENSION': function(){
+      this.currentPage = 1
+      this.statusOptions.forEach(item =>{
+        if(item.value === this.DIMENSION){
+          this.selected = item.name
+          this.$router.push({name: 'locations', query:{
+                status: this.DIMENSION
+          }})
+        }
+      })
+    },
+    'SEARCH': function(){
+      this.currentPage = 1
+      this.$router.push({name: 'locations', query:{
+        search: this.SEARCH
+      }})
+    },
+        'currentPage': function(){
+      this.$router.push({name: 'locations', query:{
+        ...this.$route.query,
+          page: this.currentPage,
+      }})
+    }
+  }
 }
 </script>
 
