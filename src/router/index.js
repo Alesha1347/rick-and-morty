@@ -17,7 +17,7 @@ const routes = [
     name: 'header',
     children: [
       {
-        path:'/characters',
+        path:'/',
         component: Characters,
         name: 'characters'
       },
