@@ -37,7 +37,6 @@ export default {
             this.$store.state.characters.isLoaded = false
             this.$store.state.locations.isLoaded = false
             this.$store.state.episodes.isLoaded = true
-            console.log(value)
             }, 1000)
         },
     }

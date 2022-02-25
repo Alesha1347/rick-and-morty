@@ -11,7 +11,8 @@
             <ul class="menu__links">
                <b-navbar>
     <b-navbar-nav>
-          <router-link class='menu__link' active-class="active" exact :to="{name: 'characters'}">Персонажи</router-link>
+          <router-link class='menu__link' active-class="active" exact :to="{name: 'characters'}"
+          >Персонажи</router-link>
           <router-link class="menu__link" active-class="active" :to="{name: 'locations'}">Локации</router-link>
           <router-link class="menu__link" active-class="active" :to="{name: 'episodes'}">Эпизоды</router-link>
     </b-navbar-nav>
@@ -29,16 +30,6 @@
 import Footer from './Footer.vue'
 export default {
   components:{Footer}
-  // data(){
-  //   return{
-  //     isActive: false
-  //   }
-  // },
-  // methods:{
-  //   myFilter(){
-  //     this.isActive = !this.isActive
-  //   }
-  // }
 }
 </script>
 

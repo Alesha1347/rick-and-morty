@@ -91,9 +91,9 @@ export default {
 
                 if(maxVal - minVal < this.minGap){
                     if(e.target.className === 'slider-1'){
-                    rangeInput[0].value = maxVal - this.minGap
+                    this.firstLocationChange = rangeInput[0].value = maxVal - this.minGap
                     } else {
-                    rangeInput[1].value = minVal + this.minGap
+                    this.lastLocationChange = rangeInput[1].value = minVal + this.minGap
                     }
                 }
                 })
@@ -117,7 +117,7 @@ export default {
 
 <style>
 .range-slider {
-    width: 30vmin;
+    width: 40vmin;
     margin-top: -80px;
 }
 .range-slider-inputs {

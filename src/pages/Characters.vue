@@ -89,7 +89,7 @@ export default {
         search: this.SEARCH
       }})
     },
-        'currentPage': function(){
+    'currentPage': function(){
       this.$router.push({name: 'characters', query:{
         ...this.$route.query,
           page: this.currentPage,
